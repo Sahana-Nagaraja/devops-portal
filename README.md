@@ -1,6 +1,11 @@
 # [Backstage](https://backstage.io)
 
-This is your newly scaffolded Backstage App, Good Luck!
+This is the newly scaffolded Backstage App!
+
+To export all the env vars in .env file, run:
+```shell
+export $(xargs <.env)
+```
 
 To start the app, run:
 
