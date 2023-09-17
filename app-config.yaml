@@ -82,8 +82,13 @@ catalog:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
   rules:
-    - allow: [Component, System, API, Resource, Location]
+    - allow: [Component, System, API, Resource, Location, Template]
   locations:
+    - type: url
+      target: https://github.com/Sahana-Nagaraja/backstage-springboot-template/blob/main/template.yaml
+      rules:
+        - allow: [ User, Group ]
+
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
     - type: file
       target: ../../examples/entities.yaml
