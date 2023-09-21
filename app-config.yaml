@@ -48,6 +48,15 @@ integrations:
     #   token: ${GHE_TOKEN}
 
 proxy:
+  '/gocd':
+    target: ${GOCD_SERVER_URL}/go/api
+    allowedMethods: [ 'GET' ]
+    allowedHeaders: [ 'Authorization' ]
+    headers:
+      Authorization: Basic ${GOCD_AUTH_CREDENTIALS}
+
+gocd:
+  baseUrl: ${GOCD_SERVER_URL}
   ### Example for how to add a proxy endpoint for the frontend.
   ### A typical reason to do this is to handle HTTPS and CORS for internal services.
   # '/test':
