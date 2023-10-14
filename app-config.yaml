@@ -136,3 +136,6 @@ kubernetes:
           skipTLSVerify: true
           skipMetricsLookup: false
           serviceAccountToken: ${K8S_SERVICE_ACCOUNT_TOKEN}
+
+openai:
+  apiKey: ${OPENAI_API_KEY}
