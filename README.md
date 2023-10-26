@@ -29,3 +29,6 @@ Configuring kubernets plugin:
 ```shell
    minikube addons enable metrics-server
 ```
+6. Bring up prometheus and grafana
+```shell
+```

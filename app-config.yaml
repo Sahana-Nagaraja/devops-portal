@@ -1,6 +1,6 @@
 app:
   title: Scaffolded Backstage App
-  baseUrl: http://localhost:3000
+  baseUrl: http://localhost:3001
 
 organization:
   name: My Company
@@ -22,7 +22,7 @@ backend:
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
   cors:
-    origin: http://localhost:3000
+    origin: http://localhost:3001
     methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
     credentials: true
   # This is for local development only, it is not recommended to use this in production
@@ -54,6 +54,11 @@ proxy:
     allowedHeaders: [ 'Authorization' ]
     headers:
       Authorization: Basic ${GOCD_AUTH_CREDENTIALS}
+  '/grafana/api':
+    # May be a public or an internal DNS
+    target: http://localhost:3000/
+    headers:
+      Authorization: Bearer ${GRAFANA_TOKEN}
 
 gocd:
   baseUrl: ${GOCD_SERVER_URL}
@@ -139,3 +144,12 @@ kubernetes:
 
 openai:
   apiKey: ${OPENAI_API_KEY}
+
+grafana:
+  # Publicly accessible domain
+  domain: http://localhost:3000
+
+  # Is unified alerting enabled in Grafana?
+  # See: https://grafana.com/blog/2021/06/14/the-new-unified-alerting-system-for-grafana-everything-you-need-to-know/
+  # Optional. Default: false
+  unifiedAlerting: false

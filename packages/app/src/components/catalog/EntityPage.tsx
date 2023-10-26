@@ -59,6 +59,10 @@ import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 import { EntityGoCdContent } from '@backstage/plugin-gocd';
 import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
+import {
+  EntityGrafanaDashboardsCard, EntityOverviewDashboardViewer
+} from '@k-phoen/backstage-plugin-grafana';
+
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -131,6 +135,18 @@ const overviewContent = (
     </Grid>
     <Grid item md={6} xs={12}>
       <EntityCatalogGraphCard variant="gridItem" height={400} />
+    </Grid>
+
+    <Grid item md={6}>
+      {/* Grafana alert card start */}
+      <EntityGrafanaDashboardsCard />
+      {/* Grafana alert card end */}
+    </Grid>
+
+    <Grid item md={8} xs={12}>
+      {/* Grafana overview dashboard embed start */}
+      <EntityOverviewDashboardViewer variant="gridItem" />
+      {/* Grafana overview dashboard embed end */}
     </Grid>
 
     <Grid item md={4} xs={12}>

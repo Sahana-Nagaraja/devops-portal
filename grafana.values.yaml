@@ -1,0 +1,4 @@
+grafana.ini:
+  security:
+    allow_embedding: true
+    cookie_secure: false
