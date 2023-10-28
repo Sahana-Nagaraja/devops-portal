@@ -62,7 +62,10 @@ import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
 import {
   EntityGrafanaDashboardsCard, EntityOverviewDashboardViewer
 } from '@k-phoen/backstage-plugin-grafana';
-
+import {
+  EntityGithubPullRequestsContent,
+  isGithubPullRequestsAvailable,
+} from '@roadiehq/backstage-plugin-github-pull-requests';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -197,6 +200,9 @@ const serviceEntityPage = (
     </EntityLayout.Route>
     <EntityLayout.Route path="/kubernetes" title="Kubernetes">
         <EntityKubernetesContent refreshIntervalMs={30000} />
+    </EntityLayout.Route>
+    <EntityLayout.Route path="/pull-requests" title="Pull Requests">
+        <EntityGithubPullRequestsContent />
     </EntityLayout.Route>
   </EntityLayout>
 );
