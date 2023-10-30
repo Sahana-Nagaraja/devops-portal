@@ -37,6 +37,7 @@ import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/
 import { githubAuthApiRef } from '@backstage/core-plugin-api';
 import { SignInPage } from '@backstage/core-components';
 import { ChatGPTFrontendPage } from '@enfuse/chatgpt-plugin-frontend';
+import { BulletinBoardPage } from 'backstage-plugin-bulletin-board';
 
 const app = createApp({
   apis,
@@ -112,6 +113,7 @@ const routes = (
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
     <Route path="/chatgpt" element={<ChatGPTFrontendPage />} />
+    <Route path="/bulletin-board" element={<BulletinBoardPage />} />
   </FlatRoutes>
 );
 

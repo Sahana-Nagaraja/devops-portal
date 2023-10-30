@@ -36,6 +36,7 @@
     "@backstage/plugin-techdocs-backend": "^1.6.4",
     "@enfuse/plugin-chatgpt-backend": "^1.1.1",
     "app": "link:../app",
+    "backstage-plugin-bulletin-board-backend": "^0.2.1",
     "better-sqlite3": "^8.0.0",
     "dockerode": "^3.3.1",
     "express": "^4.17.1",
