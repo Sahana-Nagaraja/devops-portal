@@ -34,6 +34,7 @@ import { ServerPermissionClient } from '@backstage/plugin-permission-node';
 import { DefaultIdentityClient } from '@backstage/plugin-auth-node';
 import chatGPTBackend from './plugins/chatgpt';
 import bulletinBoard from './plugins/bulletin-board';
+import sonarqube from './plugins/sonarqube';
 
 function makeCreateEnv(config: Config) {
   const root = getRootLogger();
@@ -91,6 +92,7 @@ async function main() {
   const kubernetesEnv = useHotMemoize(module, () => createEnv('kubernetes'));
   const chatgptEnv = useHotMemoize(module, () => createEnv('chatgpt-backend'));
   const bulletinBoardEnv = useHotMemoize(module, () => createEnv('bulletin-board'));
+  const sonarqubeEnv = useHotMemoize(module, () => createEnv('sonarqube'));
 
   const apiRouter = Router();
   apiRouter.use('/catalog', await catalog(catalogEnv));
@@ -102,6 +104,7 @@ async function main() {
   apiRouter.use('/kubernetes', await kubernetes(kubernetesEnv));
   apiRouter.use('/chatgpt', await chatGPTBackend(chatgptEnv));
   apiRouter.use('/bulletin-board', await bulletinBoard(bulletinBoardEnv));
+  apiRouter.use('/sonarqube', await sonarqube(sonarqubeEnv));
 
   // Add backends ABOVE this line; this 404 handler is the catch-all fallback
   apiRouter.use(notFoundHandler());

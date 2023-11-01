@@ -63,10 +63,10 @@ import {
   EntityGrafanaDashboardsCard, EntityOverviewDashboardViewer
 } from '@k-phoen/backstage-plugin-grafana';
 import {
-  EntityGithubPullRequestsContent,
-  isGithubPullRequestsAvailable,
+  EntityGithubPullRequestsContent
 } from '@roadiehq/backstage-plugin-github-pull-requests';
 import { EntitySecurityInsightsContent } from '@roadiehq/backstage-plugin-security-insights';
+import { EntitySonarQubeCard } from '@backstage/plugin-sonarqube';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -137,27 +137,29 @@ const overviewContent = (
     <Grid item md={6}>
       <EntityAboutCard variant="gridItem" />
     </Grid>
-    <Grid item md={6} xs={12}>
+
+    <Grid item md={6}>
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
 
-    <Grid item md={6}>
-      {/* Grafana alert card start */}
-      <EntityGrafanaDashboardsCard />
-      {/* Grafana alert card end */}
+    <Grid item md={12}>
+      <EntityGrafanaDashboardsCard variant="gridItem" />
     </Grid>
 
-    <Grid item md={8} xs={12}>
-      {/* Grafana overview dashboard embed start */}
-      <EntityOverviewDashboardViewer variant="gridItem" />
-      {/* Grafana overview dashboard embed end */}
+    <Grid item md={8}>
+      <EntityOverviewDashboardViewer variant="gridItem"  />
     </Grid>
 
-    <Grid item md={4} xs={12}>
-      <EntityLinksCard />
+    <Grid item md={4}>
+      <EntityLinksCard variant="gridItem" />
     </Grid>
-    <Grid item md={8} xs={12}>
-      <EntityHasSubcomponentsCard variant="gridItem" />
+
+    <Grid item lg={8}>
+      <EntitySonarQubeCard variant="gridItem"  />
+    </Grid>
+
+    <Grid item md={4}>
+      <EntityHasSubcomponentsCard variant="gridItem"  />
     </Grid>
   </Grid>
 );
