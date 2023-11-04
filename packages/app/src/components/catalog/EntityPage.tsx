@@ -67,6 +67,12 @@ import {
 } from '@roadiehq/backstage-plugin-github-pull-requests';
 import { EntitySecurityInsightsContent } from '@roadiehq/backstage-plugin-security-insights';
 import { EntitySonarQubeCard } from '@backstage/plugin-sonarqube';
+import {
+  isNewRelicDashboardAvailable,
+  EntityNewRelicDashboardContent,
+  EntityNewRelicDashboardCard,
+} from '@backstage/plugin-newrelic-dashboard';
+
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -161,6 +167,13 @@ const overviewContent = (
     <Grid item md={4}>
       <EntityHasSubcomponentsCard variant="gridItem"  />
     </Grid>
+    <EntitySwitch>
+        <EntitySwitch.Case if={isNewRelicDashboardAvailable}>
+            <Grid item md={6} xs={12}>
+              <EntityNewRelicDashboardCard />
+            </Grid>
+        </EntitySwitch.Case>
+    </EntitySwitch>
   </Grid>
 );
 
@@ -209,6 +222,12 @@ const serviceEntityPage = (
     </EntityLayout.Route>
     <EntityLayout.Route path="/security-insights" title="Security Insights">
         <EntitySecurityInsightsContent />
+    </EntityLayout.Route>
+    <EntityLayout.Route
+      if={isNewRelicDashboardAvailable}
+      path="/newrelic-dashboard"
+      title="New Relic Dashboard">
+        <EntityNewRelicDashboardContent />
     </EntityLayout.Route>
   </EntityLayout>
 );

@@ -59,7 +59,10 @@ proxy:
     target: http://localhost:3000/
     headers:
       Authorization: Bearer ${GRAFANA_TOKEN}
-
+  '/newrelic/api':
+    target: https://api.newrelic.com
+    headers:
+      X-Api-Key: ${NEW_RELIC_REST_API_KEY}
 gocd:
   baseUrl: ${GOCD_SERVER_URL}
   ### Example for how to add a proxy endpoint for the frontend.
